@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: <%= ENV['DATABASE_HOST'] %>
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+
+development:
+  <<: *default
+  database: virtual_aesthetics_appointment_development
+
+test:
+  <<: *default
+  database: virtual_aesthetics_appointment_test
+
+production:
+  <<: *default
+  database: virtual_aesthetics_appointment_production
+  username: <%= ENV['VIRTUAL_AESTHETICS_APPOINTMENT_DATABASE_USER'] %>
+  password: <%= ENV['VIRTUAL_AESTHETICS_APPOINTMENT_DATABASE_PASSWORD'] %>
