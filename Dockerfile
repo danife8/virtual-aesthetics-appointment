@@ -1,16 +1,18 @@
 # Dockerfile
-FROM ruby:3.4.1-alpine
+FROM ruby:3.4
 
 # Install dependencies
-RUN apk add --update --no-cache \
-    build-base \
-    postgresql-dev \
+RUN apt-get update -qq && apt-get install -y --no-install-recommends \
+    build-essential \
+    libpq-dev \
     postgresql-client \
     nodejs \
     yarn \
     tzdata \
     git \
-    libpq
+    libyaml-dev \
+    netcat-openbsd \
+&& rm -rf /var/lib/apt/lists/*
 
 WORKDIR /virtual-aesthetics-appointment
 
