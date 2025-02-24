@@ -45,3 +45,9 @@ Rails/StrongParametersExpect:
 
 RSpec/MultipleExpectations:
   Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
+
+Rails/I18nLocaleTexts:
+  Enabled: false
