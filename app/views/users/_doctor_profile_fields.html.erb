@@ -1,0 +1,10 @@
+<%= f.fields_for :doctor_profile do |dpf| %>
+  <div class="field">
+    <%= dpf.label :specialization %><br />
+    <%= dpf.text_field :specialization, autofocus: true, required: true, autocomplete: "specialization" %>
+  </div>
+  <div class="field">
+    <%= dpf.label :location %><br />
+    <%= dpf.text_field :location, autofocus: true, required: true, autocomplete: "location" %>
+  </div>
+<% end %>

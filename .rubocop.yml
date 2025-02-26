@@ -1,6 +1,8 @@
 AllCops:
   NewCops: enable
   SuggestExtensions: false
+  Exclude:
+    - 'db/**/*'
 
 require:
   - rubocop-capybara
@@ -14,6 +16,9 @@ Naming/VariableNumber:
 
 Metrics/BlockLength:
   Max: 120
+
+Metrics/AbcSize:
+  Max: 30
 
 Metrics/CyclomaticComplexity:
   Max: 10
@@ -31,6 +36,7 @@ Style/Documentation:
     - 'app/mailers/application_mailer.rb'
     - 'app/models/application_record.rb'
     - 'config/application.rb'
+
   Enabled: false
 
 Style/IfUnlessModifier:
@@ -44,4 +50,10 @@ Rails/StrongParametersExpect:
   Enabled: false
 
 RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
+
+Rails/I18nLocaleTexts:
   Enabled: false

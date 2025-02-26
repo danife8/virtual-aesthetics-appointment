@@ -26,7 +26,7 @@ if Rails.env.development?
                             'format_bare' => 'true',
                             'format_rdoc' => 'false',
                             'format_markdown' => 'false',
-                            'sort' => 'true',
+                            'sort' => 'false',
                             'force' => 'false',
                             'trace' => 'false'
                           })
