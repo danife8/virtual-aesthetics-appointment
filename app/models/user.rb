@@ -18,11 +18,26 @@
 #
 
 class User < ApplicationRecord
-  # CONSTANTS
-  ROLES = %w[doctor patient].freeze
+  # DEVISE MODULES
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
+
+  # SCOPES
+  scope :doctors, -> { where(role: 'doctor') }
+  scope :patients, -> { where(role: 'patient') }
+
+  # CONSTANTS/ENUMS
+  enum :role, { patient: 'patient', doctor: 'doctor' }
 
   # VALIDATIONS
   validates :first_name, :last_name, :email, :role, presence: true
-  validates :role, inclusion: { in: ROLES }
+  validates :role, inclusion: { in: roles.values }
   validates :email, uniqueness: true
+  validates :doctor_profile, presence: true, if: -> { role == 'doctor' }
+
+  # ASSOCIATIONS
+  has_one :doctor_profile, dependent: :destroy
+
+  # NESTED ATTRIBUTES
+  accepts_nested_attributes_for :doctor_profile
 end

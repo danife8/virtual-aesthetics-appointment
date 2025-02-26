@@ -3,6 +3,7 @@
 source 'https://rubygems.org'
 
 gem 'bootsnap', require: false
+gem 'devise', '~> 4.9'
 gem 'image_processing', '~> 1.2'
 gem 'importmap-rails'
 gem 'kamal', require: false
@@ -17,6 +18,8 @@ group :development, :test do
   gem 'annotate'
   gem 'brakeman', require: false
   gem 'debug', platforms: %i[mri windows], require: 'debug/prelude'
+  gem 'factory_bot_rails'
+  gem 'faker'
   gem 'rspec-rails', '~> 7.0.0'
   gem 'rubocop', require: false
   gem 'rubocop-capybara', require: false
@@ -30,5 +33,6 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'shoulda-matchers', '~> 6.0'
   gem 'simplecov', require: false
 end
