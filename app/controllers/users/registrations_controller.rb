@@ -8,8 +8,15 @@ module Users
       build_resource
       resource.role = params[:role] || 'patient'
       resource.build_doctor_profile if resource.doctor?
+
+      template_path = if resource.doctor?
+                        'users/registrations/new_doctor'
+                      else
+                        'users/registrations/new_patient'
+                      end
+
       respond_with(resource) do |format|
-        format.html { render template: "users/registrations/new_#{resource.role}" }
+        format.html { render template: template_path }
       end
     end
 
