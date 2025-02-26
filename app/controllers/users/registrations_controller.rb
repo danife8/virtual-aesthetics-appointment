@@ -17,11 +17,17 @@ module Users
       build_resource(sign_up_params)
       resource.role = params[:user][:role] || 'patient'
 
+      template_path = if resource.doctor?
+                        'users/registrations/new_doctor'
+                      else
+                        'users/registrations/new_patient'
+                      end
+
       if resource.save
         redirect_to root_path
       else
         clean_up_passwords(resource)
-        render template: "users/registrations/new_#{resource.role}"
+        render template: template_path
       end
     end
 
